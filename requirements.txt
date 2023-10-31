@@ -1,0 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Oct 31 12:56:31 2023
+
+@author: EVHARLEY
+"""
+
+numpy
+pandas
+plotly
+scikit-learn
+spacy
