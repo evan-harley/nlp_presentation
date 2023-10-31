@@ -122,3 +122,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Data Folder
+datasets/
+
+cTfIdf_jds.pkl
+ctfidf_vector.pkl
+jds.csv
