@@ -8,9 +8,11 @@ from sklearn.metrics.pairwise import cosine_similarity
 import spacy
 import streamlit as st
 import subprocess
+import sys
 
 
-subprocess.run([f"{sys.executable}", "-m spacy download en_core_web_lg"])
+subprocess.run([f"{sys.executable}", "-m" , "spacy download en_core_web_lg"])
+print("Why isn't this waiting")
 NLP = spacy.load("en_core_web_lg")  
 
 @st.cache_data
