@@ -15,7 +15,7 @@ NLP = spacy.load("en_core_web_lg")
 @st.cache_data
 def load_2D_data() -> pd.DataFrame:
     df = pd.read_pickle('reduced.pkl')
-    titles = list(df.pop(0))
+    titles = list(df.pop('title'))
     vectors = TSNE().fit_transform(df)
     data = []
     for i in range(len(titles)):
@@ -106,14 +106,14 @@ with st.container():
     data = load_data()
     st.header("Machine Learning Application")
     with st.form("Similarity"):
-        choice = st.selectbox("Choose a Job Title", options=data[0].to_list())
+        choice = st.selectbox("Choose a Job Title", options=data['title'].to_list())
         submit4 = st.form_submit_button()
         
     if submit4:
-        matrix = data.loc[:, data.columns != 0].copy()
-        value = data.loc[data[0] == choice, data.columns != 0].to_numpy()
+        matrix = data.loc[:, data.columns != 'title'].copy()
+        value = data.loc[data['title'] == choice, data.columns != 'title'].to_numpy()
         similarity = cosine_similarity(matrix, value)
-        similarity_df = pd.DataFrame({'title': data[0].to_list(),
+        similarity_df = pd.DataFrame({'title': data['title'].to_list(),
                                       'similarity': list(similarity)})
         similarity_df.sort_values('similarity', ascending=False, inplace=True)
         st.dataframe(similarity_df.head(10))

@@ -13,7 +13,7 @@ def decrease_dimensionality():
     
     df = pd.read_pickle('ctfidf_vector.pkl')
     
-    reduced = SelectKBest(k=1000).fit_transform(df.loc[:, df.columns != 0], 
+    reduced = SelectKBest(k=10000).fit_transform(df.loc[:, df.columns != 0], 
                                                 df.loc[:, df.columns == 0])
     reduced_df = pd.DataFrame(reduced)
     reduced_df['title'] = df[0]
