@@ -7,9 +7,10 @@ from sklearn.manifold import TSNE
 from sklearn.metrics.pairwise import cosine_similarity
 import spacy
 import streamlit as st
+import subprocess
 
 
-
+subprocess.run([f"{sys.executable}", "-m spacy download en_core_web_lg"])
 NLP = spacy.load("en_core_web_lg")  
 
 @st.cache_data
